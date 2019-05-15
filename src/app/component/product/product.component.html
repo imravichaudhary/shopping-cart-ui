@@ -1,0 +1,9 @@
+<div class="grid-container">
+  <mat-grid-list cols="3" rowHeight="350px">
+    <div *ngFor="let product of products$ | async">
+      <mat-grid-tile>
+        <app-card [card]="product"></app-card>
+      </mat-grid-tile>
+    </div>
+  </mat-grid-list>
+</div>
