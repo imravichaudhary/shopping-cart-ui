@@ -1,3 +1,16 @@
-<p>
-  product-detail works!
-</p>
+<mat-card class="card" *ngIf="product$ | async; let product">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>{{product.name}}</mat-card-title>
+    <mat-card-subtitle>Price {{product.price}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="assets/images/{{product.imageUrl}}" alt="Photo of {{product.name}}">
+  <mat-card-content>
+    <p>{{product.info}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <span>Quantity(max: {{product.quantity}}): </span><input type="number" min="1" max="{{product.quantity}}" name="quantity" />
+    <button mat-button (click)="addToCart(product)">Add to Cart</button>
+    <span>{{message}}</span>
+  </mat-card-actions>
+</mat-card>

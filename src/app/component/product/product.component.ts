@@ -4,6 +4,7 @@ import {Product} from '../../model/product.model';
 import {Observable} from 'rxjs';
 import {Cart} from '../../model/cart.model';
 import {User} from '../../model/user.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -14,29 +15,18 @@ export class ProductComponent implements OnInit {
   private products$: Observable<Product[]>;
   private user: User = null;
 
-  constructor(private restService: RestService) { }
+  constructor(private restService: RestService, private router: Router) { }
 
   ngOnInit() {
     this.getProducts();
-    this.getUserInformation();
   }
 
   getProducts() {
     this.products$ = this.restService.getProducts();
   }
 
-  getUserInformation() {
-    // TODO: call rest service for retrieving user information
-    this.user = new User();
-  }
-
-  addToCart(cartItem: Cart) {
-    this.restService.addProductToCart(this.user.id, cartItem)
-      .subscribe(res => {
-        console.log(res);
-      }, (err) => {
-        console.log(err);
-      });
+  productClick(product: Product) {
+    this.router.navigate(['/product/' + product.id]);
   }
 
 }
