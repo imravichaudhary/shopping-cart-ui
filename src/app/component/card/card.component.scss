@@ -1,4 +1,15 @@
 .card {
-  //max-width: 400px;
-  //margin: 5px;
+  .mat-card-image {
+    height: 100px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  .mat-card-content {
+    text-align: center;
+  }
+  .mat-button {
+    width: 100%;
+  }
 }
